@@ -208,12 +208,25 @@ export default {
     },
 
     mounted: function() {
-        const s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.src = 'http://api.map.baidu.com/api?v=3.0&ak=47YePekvL1id2GcOHHNuG29RV1mrsDQF';
-        document.body.appendChild(s);
+        let loadBmap = new Promise((resolve, reject) => {
+            if (window.Bmap) return resolve(window.Bmap);
 
-        this.draw()
+            window.onBMapCallback = function() {
+                window.onBMapCallback = undefined;
+                resolve(BMap);
+            }
+
+            const s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = 'http://api.map.baidu.com/api?v=3.0&ak=47YePekvL1id2GcOHHNuG29RV1mrsDQF&callback=onBMapCallback';
+            s.onerror = reject;
+            document.body.appendChild(s);
+        })
+        
+        loadBmap.then(() => {
+            this.draw()
+        })
+        
     },
 }
 </script>
