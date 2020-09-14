@@ -11,16 +11,16 @@ export default {
         return {
             option: {
                 title: {
-                    text: '文化活动用房设施',
+                    // text: '文化活动用房设施',
                     // textAlign: "center"
-                    left: "center"
+                    // left: "center"
                 },
                 tooltip: {
                     
                 },
-                // legend: {
-                //     data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
-                // },
+                legend: {
+                    // data: ['文化活动用房设施', '专业用房设施','生活用房设施','工作用房设施']
+                },
                 radar: {
                     // shape: 'circle',
                     name: {
@@ -44,12 +44,12 @@ export default {
                     ]
                 },
                 series: [{
-                    name: '预算 vs 开销（Budget vs spending）',
+                    // name: '预算 vs 开销（Budget vs spending）',
                     type: 'radar',
                     // areaStyle: {normal: {}},
                     data: [
                         {
-                            value: [380, 4498.8, 15, 13, 45, 8,6,7,9],
+                            value: [380, 5498.8, 15, 13, 45, 8,8,9,9],
                             name: '文化活动用房设施',
                             // label: {
                             //     show: true,
@@ -57,8 +57,37 @@ export default {
                             //         return params.value;
                             //     }
                             // },
-                        }
-                        
+                        },
+                        {
+                            value: [280, 3498.8, 10, 11, 40, 6,6,7,7],
+                            name: '专业用房设施',
+                            // label: {
+                            //     show: true,
+                            //     formatter: function(params) {
+                            //         return params.value;
+                            //     }
+                            // },
+                        },
+                        {
+                            value: [180, 2498.8, 8, 9, 30, 4,4,5,5],
+                            name: '生活用房设施',
+                            // label: {
+                            //     show: true,
+                            //     formatter: function(params) {
+                            //         return params.value;
+                            //     }
+                            // },
+                        },
+                        {
+                            value: [150, 2000.8, 6, 7, 25, 3,3,4,4],
+                            name: '工作用房设施',
+                            // label: {
+                            //     show: true,
+                            //     formatter: function(params) {
+                            //         return params.value;
+                            //     }
+                            // },
+                        },
                     ]
                 }]
             }

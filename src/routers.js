@@ -104,6 +104,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "Map" */ "./views/Map")
     },
     {
+        path: "/Map1",
+        component: () => import(/* webpackChunkName: "Map" */ "./views/Map1")
+    },
+    {
         path: "/TreeLegend",
         component: () => import(/* webpackChunkName: "Map" */ "./views/TreeLegend")
     },

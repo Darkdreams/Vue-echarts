@@ -28,7 +28,6 @@ export default {
                 data3.push((Math.random() + 5).toFixed(2));
                 data4.push(-(Math.random() * 5).toFixed(2));
             }
-            console.log(data3)
             let emphasisStyle = {
                 itemStyle: {
                     barBorderWidth: 1,

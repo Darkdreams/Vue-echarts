@@ -17,7 +17,7 @@ export default {
             const {$axios, $echarts} = this
             myChart = $echarts.init(document.getElementById("main"))
             $axios.get(`/lines-bus`).then( data => {
-                console.log(data)
+                // console.log(data)
                 var hStep = 300 / (data.length - 1);
                 var busLines = [].concat.apply([], data.map(function (busLine, idx) {
                     var prevPt;
@@ -215,7 +215,7 @@ export default {
                 window.onBMapCallback = undefined;
                 resolve(BMap);
             }
-
+            
             const s = document.createElement('script');
             s.type = 'text/javascript';
             s.src = 'http://api.map.baidu.com/api?v=3.0&ak=47YePekvL1id2GcOHHNuG29RV1mrsDQF&callback=onBMapCallback';
@@ -225,6 +225,7 @@ export default {
         
         loadBmap.then(() => {
             this.draw()
+            // console.log(window.Bmap, window.onBMapCallback)
         })
         
     },
