@@ -1,30 +1,25 @@
 <template>
-    <div id="main">
+    <div id="main6">
         专业用房设施
     </div>
 </template>
 
 <script>
 import 'echarts-gl';
+let myChart = ""
 export default {
+    props: {
+        width: Number
+    },
     data() {
         return {
-
-        }
-    },
-    methods: {
-        draw: function(){
-            // this.$axios.get('/3dData').then(res => {
-            // // this.qusitionList = res
-            //     console.log(res)
-            // })
-            let option = {
+            option: {
                 tooltip: {
                     trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                    formatter: '{a} <br/>{b}: {c}'
                 },
                 legend: {
-                    // orient: 'vertical',
+                    show: true,
                     type: 'scroll',
                     left: 10,
                     data: ['规模（间）', '面积（平方米）', '所属营区（个）', '配备各类营具类型（个）', '配备各类营具数量（个）','供水类型（种）', '供电类型（种）', '供暖类型（种）', '消防类型（种）']
@@ -63,26 +58,39 @@ export default {
                     }
                 ]
             }
-            const myChart = this.$echarts.init(document.getElementById("main"))
-            myChart.setOption(option)
-            window.onresize = function () {
-                myChart.resize()
-            }
+        }
+    },
+    methods: {
+        draw: function(){
+            myChart = this.$echarts.init(document.getElementById("main6"))
+            myChart.setOption(this.option)
         }
     },
     mounted() {
         this.draw()
-        // console.log(this)
-    },
-    created() {
-        
+
+        const legend = {
+            show: false
+        } 
+
+        const label = {
+            show: true,
+            fontSize: '70%',
+            fontWeight: 'bold'
+        }
+
+        if(this.width <= 470) {
+            this.option.legend = legend
+            this.option.series[0].emphasis.label = label
+            myChart.setOption(this.option)
+        }
     }
 }
 </script>
 
 <style scoped>
-    #main {
+    #main6 {
         width: 100%;
-        height: 800px;
+        height: 100%;
     }
 </style>

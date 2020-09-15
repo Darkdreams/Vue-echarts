@@ -1,20 +1,17 @@
 <template>
-    <div id="main"></div>
+    <div id="main8"></div>
 </template>
 
 <script>
 let myChart = ''
 
 export default {
+    props: {
+        width: Number
+    },
     data() {
         return {
-            
-        }
-    },
-    methods: {
-        draw: function(){
-            const { $echarts } = this
-            let option = {
+            option: {
                 angleAxis: {
                     type: 'category',
                     data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
@@ -25,6 +22,12 @@ export default {
                 radiusAxis: {
                 },
                 polar: {
+                },
+                grid: {
+                    left: "center"
+                },
+                legend: {
+                    show: true
                 },
                 series: [{
                     type: 'bar',
@@ -46,17 +49,25 @@ export default {
                     coordinateSystem: 'polar',
                     name: '附属用房设施',
                     stack: 'a'
-                }],
-                legend: {
-                    // show: true,
-                    // data: ['A', 'B', 'C']
-                }
+                }]
             }
+        }
+    },
+    methods: {
+        draw: function(){
+            const { $echarts, option } = this
 
-            myChart = $echarts.init(document.getElementById("main"))
+            myChart = $echarts.init(document.getElementById("main8"))
             myChart.setOption(option)
-            window.onresize = function () {
-                myChart.resize()
+
+            const legend = {
+                show: false
+            } 
+            
+            if(this.width <= 470) {
+                option.legend = legend
+                // myChart.resize()
+                myChart.setOption(option)
             }
         },
     },
@@ -69,9 +80,8 @@ export default {
 </script>
 
 <style scoped>
-#main {
+#main8 {
     width: 100%;
-    height: 600px;
-    border: 1px red solid;
+    height: 100%;
 }
 </style>

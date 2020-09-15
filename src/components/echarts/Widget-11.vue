@@ -1,11 +1,14 @@
 <template>
-    <div id="main"></div>
+    <div id="main11"></div>
 </template>
 
 <script>
 let myChart = ''
 
 export default {
+    props: {
+        width: Number
+    },
     data: function(){
         return {
             data1: [
@@ -86,11 +89,11 @@ export default {
         draw: function(){
             const {$echarts, data1, geoCoordMap} = this
 
-            myChart = $echarts.init(document.getElementById("main"))
+            myChart = $echarts.init(document.getElementById("main11"))
 
             let option = {
                 title: {
-                    text: '全国各省兵力',
+                    // text: '全国各省兵力',
                     left: 'center'
                 },
                 tooltip : {
@@ -218,7 +221,7 @@ export default {
                             show: false
                         },
                         itemStyle: {
-                            color: 'purple'
+                            color: 'rgba(255, 0,0,1)'
                         },
                         emphasis: {
                             label: {
@@ -251,7 +254,7 @@ export default {
                             show: true
                         },
                         itemStyle: {
-                            color: 'purple',
+                            color: 'rgba(255, 0, 0, 1)',
                             shadowBlur: 10,
                             shadowColor: '#333'
                         },
@@ -259,11 +262,12 @@ export default {
                     }
                 ]
             };
-
+            
             myChart.setOption(option)
-
-            window.onresize = function () {
-                myChart.resize()
+            const roam = false
+            if(this.width <= 470) {
+                option.bmap.roam = roam
+                myChart.setOption(option, false)
             }
         }
     },
@@ -283,7 +287,6 @@ export default {
             s.onerror = reject;
             document.body.appendChild(s);
         })
-        
         loadBmap.then(() => {
             this.draw()
         })
@@ -292,9 +295,8 @@ export default {
 </script>
 
 <style scoped>
-#main {
+#main11 {
     width: 100%;
-    height: 600px;
-    border: 1px red solid;
+    height: 100%;
 }
 </style>

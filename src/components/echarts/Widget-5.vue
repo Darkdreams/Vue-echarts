@@ -1,28 +1,28 @@
 <template>
-    <div id="main">
+    <div id="main5">
         装备编配和保障情况分析展现：能够展现装备超缺编情况，装备规模结构，重点装备油耗等情况。
     </div>
 </template>
 
 <script>
-
+let myChart = ""
 export default {
+    props: {
+        width: Number
+    },
     data() {
         return {
             option: {
                 title: {
-                    // text: '文化活动用房设施',
-                    // textAlign: "center"
-                    // left: "center"
+                    
                 },
                 tooltip: {
                     
                 },
                 legend: {
-                    // data: ['文化活动用房设施', '专业用房设施','生活用房设施','工作用房设施']
+                    show: true
                 },
                 radar: {
-                    // shape: 'circle',
                     name: {
                         textStyle: {
                             color: '#fff',
@@ -37,7 +37,7 @@ export default {
                         { name: '所属营区（个）', max: 20},
                         { name: '配备各类营具类型（个）', max: 15},
                         { name: '配备各类营具数量（个）', max: 50},
-                        { name: '供水类型（种））', max: 10},
+                        { name: '供水类型（种）', max: 10},
                         { name: '供电类型（种）', max: 10},
                         { name: '供暖类型（种）', max: 10},
                         { name: '消防类型（种）', max: 10}
@@ -46,10 +46,10 @@ export default {
                 series: [{
                     // name: '预算 vs 开销（Budget vs spending）',
                     type: 'radar',
-                    // areaStyle: {normal: {}},
+                    // areaStyle: {},
                     data: [
                         {
-                            value: [380, 5498.8, 15, 13, 45, 8,8,9,9],
+                            value: [400, 6000, 5, 2.5, 10, 6,6,8,6],
                             name: '文化活动用房设施',
                             // label: {
                             //     show: true,
@@ -59,7 +59,7 @@ export default {
                             // },
                         },
                         {
-                            value: [280, 3498.8, 10, 11, 40, 6,6,7,7],
+                            value: [300,4000,14,9,35,9,9,3,3],
                             name: '专业用房设施',
                             // label: {
                             //     show: true,
@@ -68,26 +68,28 @@ export default {
                             //     }
                             // },
                         },
-                        {
-                            value: [180, 2498.8, 8, 9, 30, 4,4,5,5],
-                            name: '生活用房设施',
-                            // label: {
-                            //     show: true,
-                            //     formatter: function(params) {
-                            //         return params.value;
-                            //     }
-                            // },
-                        },
-                        {
-                            value: [150, 2000.8, 6, 7, 25, 3,3,4,4],
-                            name: '工作用房设施',
-                            // label: {
-                            //     show: true,
-                            //     formatter: function(params) {
-                            //         return params.value;
-                            //     }
-                            // },
-                        },
+                        // {
+                        //     value: [80, 2000, 10, 10, 40, 5,5,5,5],
+                        //     name: '生活用房设施',
+                        //     // label: {
+                        //     //     show: true,
+                        //     //     formatter: function(params) {
+                        //     //         return params.value;
+                        //     //     }
+                        //     // },
+                        // },
+                        // {
+                        //     value: [80, 1000.8, 2, 1, 6, 9,9,9,9],
+                        //     name: '工作用房设施',
+                        //     zIndex: 10,
+                        //     z: 2
+                        //     // label: {
+                        //     //     show: true,
+                        //     //     formatter: function(params) {
+                        //     //         return params.value;
+                        //     //     }
+                        //     // },
+                        // },
                     ]
                 }]
             }
@@ -95,23 +97,40 @@ export default {
     },
     methods: {
         draw: function(){
-            const myChart = this.$echarts.init(document.getElementById("main"))
+            myChart = this.$echarts.init(document.getElementById("main5"))
             myChart.setOption(this.option)
-            window.onresize = function () {
-                myChart.resize()
-            }
         }
     },
     mounted() {
         this.draw()
+
+        const legend = {
+            show: false
+        } 
+        const indicator = [
+            { name: '', max: 500},
+            { name: '', max: 7000},
+            { name: '', max: 20},
+            { name: '', max: 15},
+            { name: '', max: 50},
+            { name: '', max: 10},
+            { name: '', max: 10},
+            { name: '', max: 10},
+            { name: '', max: 10}
+        ]
+        if(this.width <= 470) {
+            this.option.legend = legend
+            // this.option.radar.indicator = indicator
+            // myChart.resize()
+            myChart.setOption(this.option)
+        }
     },
 }
 </script>
 
 <style scoped>
-    #main {
+    #main5 {
         width: 100%;
-        height: 800px;
-        border:1px red solid;
+        height: 100%;
     }
 </style>

@@ -1,11 +1,14 @@
 <template>
-    <div id="main"></div>
+    <div id="main12"></div>
 </template>
 
 <script>
 let myChart = ''
 
 export default {
+    props: {
+        width: Number
+    },
     data: function(){
         return {
 
@@ -15,9 +18,8 @@ export default {
     methods: {
         draw: function(){
             const {$axios, $echarts} = this
-            myChart = $echarts.init(document.getElementById("main"))
+            myChart = $echarts.init(document.getElementById("main12"))
             $axios.get(`/lines-bus`).then( data => {
-                // console.log(data)
                 var hStep = 300 / (data.length - 1);
                 var busLines = [].concat.apply([], data.map(function (busLine, idx) {
                     var prevPt;
@@ -179,8 +181,6 @@ export default {
                         data: busLines,
                         silent: true,
                         lineStyle: {
-                            // color: '#c23531',
-                            // color: 'rgb(200, 35, 45)',
                             opacity: 0.2,
                             width: 1
                         },
@@ -225,7 +225,6 @@ export default {
         
         loadBmap.then(() => {
             this.draw()
-            // console.log(window.Bmap, window.onBMapCallback)
         })
         
     },
@@ -233,9 +232,8 @@ export default {
 </script>
 
 <style scoped>
-#main {
+#main12 {
     width: 100%;
-    height: 600px;
-    border: 1px red solid;
+    height: 100%;
 }
 </style>

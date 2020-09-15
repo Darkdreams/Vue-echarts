@@ -1,21 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav">
-      <router-link to="/wjdemo1">部队编制体制, 数量规模</router-link>
-      <router-link to="/wjdemo2">物资水平战略物资储备</router-link>
-      <router-link to="/wjdemo9">武器装备数据</router-link>
-      <router-link to="/wjdemo3">部队编成</router-link>
-      <router-link to="/wjdemo4">文化活动用房设施</router-link>
-      <router-link to="/wjdemo8">工作用房设施</router-link>
-      <router-link to="/wjdemo6">武装力量数据</router-link>
-      <router-link to="/TreeLegend">组织树</router-link>
-      <router-link to="/Map1">全国兵力地图</router-link>
-      <router-link to="/Map">公交交通地图</router-link>
-    </div>
-    <div class="container">
-      <router-view></router-view>
-    </div>
-    <!-- <FooterMod></FooterMod> -->
+    <Widgets />
   </div>
 </template>
 
@@ -24,7 +9,7 @@
 // import BaseDemo from './components/BaseDemo.vue'
 // import ExerciseJSX from './components/ExerciseJSX.vue';
 // import BaseLevel from './components/BaseLevel.vue'
-
+import Widgets from './views/Widgets'
 export default {
   name: 'App',
   data: function() {
@@ -33,11 +18,7 @@ export default {
     }
   },
   components: {
-    // HelloWorld
-    // BaseDemo,
-    // ExerciseJSX
-    // BaseLevel
-    // FooterMod
+    Widgets
   },
   methods: {
     handleClick: function(){

@@ -1,28 +1,19 @@
 <template>
-    <div id="main">物资水平战略物资储备</div>
+    <div id="main2">物资水平战略物资储备</div>
 </template>
 
 <script>
 let myChart = null
 
 export default {
+    props: {
+        width: Number
+    },
     data() {
         return {
             dataMap: {},
             optionEchart: {
                 baseOption: {
-                    
-                    // timeline: {
-                    //     axisType: 'category',
-                    //     playInterval: 5000,
-                    //     controlStyle: {
-                    //         itemSize: 12,
-                    //         itemGap: 12
-                    //     },
-                    //     data: [
-                    //         '2016', '2017', '2018', '2019', '2020'
-                    //     ],
-                    // },
                     angleAxis: {
                         type: 'category',
                         data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
@@ -35,14 +26,16 @@ export default {
                             }
                         },
                         axisLine: {
-                            show: false
-                        }
+                            show: false,
+                        },
+                        // polarIndex: 1
                     },
                     radiusAxis: {
                         // type: 'category',
                         axisLine: {
                             show: false
                         },
+                        // polarIndex: 1
                         // axisLabel: {
                         //     rotate: 45
                         // }
@@ -55,6 +48,7 @@ export default {
                     tooltip: {
                     },
                     legend: {
+                        show: true,
                         textStyle: {
                             fontSize: 10
                         },
@@ -70,6 +64,9 @@ export default {
                         // },
                         // selectedMode: "single"
                     },
+                    grid: {
+                        left: "center"
+                    },
                     series: [
                         { 
                             name: '武器装备储备数据', 
@@ -79,11 +76,8 @@ export default {
                             coordinateSystem: 'polar', 
                             stack: 'a',
                             symbolSize: function (val,index) {
-                                console.log(index.dataIndex)
-                                 
                                 return val / 2;
-                                // console.log(val, val)
-        },
+                            },
                             animationDelay: function (idx) {
                                 return idx * 5;
                             }               
@@ -116,48 +110,48 @@ export default {
                                 return idx * 5;
                             }                
                         },
-                        { 
-                            name: '卫生物资储备数据', 
-                            type: 'scatter',
-                            barWidth:'10',
-                            data: [97.4, 54, 90.2, 48.3, 107.9, 51.4, 98.9, 33.6, 99.5, 44.7, 93, 54], 
-                            coordinateSystem: 'polar', 
-                            stack: 'a',
-                            symbolSize: function (val) {
-                                return val / 2;
-                            },
-                            animationDelay: function (idx) {
-                                return idx * 5;
-                            }                
-                        },
-                        { 
-                            name: '运输装备储备数据', 
-                            type: 'scatter',
-                            barWidth:'10',
-                            data: [105.9, 49.3, 100.1, 51.9, 101.1, 52.3, 108.7, 58.5, 110, 51.7, 107.8, 45], 
-                            coordinateSystem: 'polar', 
-                            stack: 'a',
-                            symbolSize: function (val) {
-                                return val / 2;
-                            },
-                            animationDelay: function (idx) {
-                                return idx * 5;
-                            }                
-                        },
-                        { 
-                            name: '野营装备储备数据', 
-                            type: 'scatter',
-                            barWidth:'10',
-                            data: [97.4, 52, 90.2, 48.3, 107.9, 50.4, 98.9, 54.6, 99.5, 50.7, 93, 59], 
-                            coordinateSystem: 'polar', 
-                            stack: 'a',
-                            symbolSize: function (val) {
-                                return val / 2;
-                            },
-                            animationDelay: function (idx) {
-                                return idx * 5;
-                            }                
-                        },
+                        // { 
+                        //     name: '卫生物资储备数据', 
+                        //     type: 'scatter',
+                        //     barWidth:'10',
+                        //     data: [97.4, 54, 90.2, 48.3, 107.9, 51.4, 98.9, 33.6, 99.5, 44.7, 93, 54], 
+                        //     coordinateSystem: 'polar', 
+                        //     stack: 'a',
+                        //     symbolSize: function (val) {
+                        //         return val / 2;
+                        //     },
+                        //     animationDelay: function (idx) {
+                        //         return idx * 5;
+                        //     }                
+                        // },
+                        // { 
+                        //     name: '运输装备储备数据', 
+                        //     type: 'scatter',
+                        //     barWidth:'10',
+                        //     data: [105.9, 49.3, 100.1, 51.9, 101.1, 52.3, 108.7, 58.5, 110, 51.7, 107.8, 45], 
+                        //     coordinateSystem: 'polar', 
+                        //     stack: 'a',
+                        //     symbolSize: function (val) {
+                        //         return val / 2;
+                        //     },
+                        //     animationDelay: function (idx) {
+                        //         return idx * 5;
+                        //     }                
+                        // },
+                        // { 
+                        //     name: '野营装备储备数据', 
+                        //     type: 'scatter',
+                        //     barWidth:'10',
+                        //     data: [97.4, 52, 90.2, 48.3, 107.9, 50.4, 98.9, 54.6, 99.5, 50.7, 93, 59], 
+                        //     coordinateSystem: 'polar', 
+                        //     stack: 'a',
+                        //     symbolSize: function (val) {
+                        //         return val / 2;
+                        //     },
+                        //     animationDelay: function (idx) {
+                        //         return idx * 5;
+                        //     }                
+                        // },
                     ]
                 },
                 options: [
@@ -185,12 +179,11 @@ export default {
                 obj[year + 'max'] = Math.floor(max / 100) * 100;
                 obj[year + 'sum'] = sum;
             }
-            console.log(obj)
             return obj;
         },
         draw: function(){
             const { $echarts, optionEchart } = this
-            myChart = $echarts.init(document.getElementById("main"))
+            myChart = $echarts.init(document.getElementById("main2"))
             myChart.setOption(optionEchart)
         },
         addData: function(){
@@ -307,21 +300,27 @@ export default {
         this.addData()
     },
     mounted() {
-        const { dataMap } = this
-        this.draw()
-        if(this.dataMap) {
-            console.log(myChart.getOption())
+        const { draw } = this
+        
+        draw()
+
+        const legend = {
+            show: false
+        } 
+          
+        if(this.width <= 470) {
+            this.optionEchart.baseOption.legend = legend
+            // myChart.resize()
+            myChart.setOption(this.optionEchart)
         }
-        window.onresize = function () {
-            myChart.resize()
-        }
+
     }
 }
 </script>
 
 <style scoped>
-    #main {
+    #main2 {
         width: 100%;
-        height: 800px;
+        height: 100%;
     }
 </style>

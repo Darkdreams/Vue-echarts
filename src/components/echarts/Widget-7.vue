@@ -1,16 +1,19 @@
 <template>
-    <div id="main">
+    <div id="main7">
         武装力量数据
     </div>
 </template>
 
 <script>
-
+let myChart = ""
 export default {
+    props: {
+        width: Number
+    },
     data() {
         return {
             cookiesTime: null,
-            
+            option: {}
         }
     },
     methods: {
@@ -38,23 +41,15 @@ export default {
                 }
             };
 
-            let option = {
+            this.option = {
                 backgroundColor: '#eee',
                 legend: {
+                    show: true,
                     data: ['各单位编制人员数', '实有人员数量', '超编数量', '缺编数量'],
                     left: 10
                 },
-                // brush: {
-                //     toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-                //     xAxisIndex: 0
-                // },
+                
                 toolbox: {
-                    // feature: {
-                    //     magicType: {
-                    //         type: ['stack', 'tiled']
-                    //     },
-                    //     dataView: {}
-                    // }
                 },
                 tooltip: {},
                 xAxis: {
@@ -69,31 +64,8 @@ export default {
                     splitArea: {show: false}
                 },
                 grid: {
-                    left: 100
+                    left: "center"
                 },
-                // visualMap: {
-                //     type: 'continuous',
-                //     dimension: 1,
-                //     text: ['High', 'Low'],
-                //     inverse: true,
-                //     itemHeight: 200,
-                //     calculable: true,
-                //     min: -2,
-                //     max: 6,
-                //     top: 60,
-                //     left: 10,
-                //     inRange: {
-                //         colorLightness: [0.4, 0.8]
-                //     },
-                //     outOfRange: {
-                //         color: '#bbb'
-                //     },
-                //     controller: {
-                //         inRange: {
-                //             color: '#2f4554'
-                //         }
-                //     }
-                // },
                 series: [
                     {
                         name: '各单位编制人员数',
@@ -123,36 +95,35 @@ export default {
                         emphasis: emphasisStyle,
                         data: data4
                     }
-                ]
+                ],
             };
 
-            // myChart.on('brushSelected');
-            const myChart = this.$echarts.init(document.getElementById("main"))
-            myChart.setOption(option)
-            window.onresize = function () {
-                myChart.resize()
+            myChart = this.$echarts.init(document.getElementById("main7"))
+            myChart.setOption(this.option)
+
+            const legend = {
+                show: false
+            } 
+
+            const grid = {}
+            
+            if(this.width <= 470) {
+                this.option.legend = legend
+                this.option.grid = grid
+                // myChart.resize()
+                myChart.setOption(this.option, true)
             }
         }
     },
     mounted() {
         this.draw()
-        // console.log(this)
-    },
-    created() {
-        // let expire = new Date((new Date()).getTime() + 2 * 60 * 60000);//有效期2小时
-        // expire = ";expires=" + expire.toGMTString();
-        // document.cookie = `username=12123; ${expire}; path=/`;
-        // this.$axios.get('/wjdemoData').then(res => {
-        //     // this.qusitionList = res
-        //     console.log(res)
-        // })
     }
 }
 </script>
 
 <style scoped>
-    #main {
+    #main7 {
         width: 100%;
-        height: 800px;
+        height: 100%;
     }
 </style>

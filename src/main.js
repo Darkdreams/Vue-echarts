@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from "./routers"
+// import router from "./routers"
 import axios from "./http"
 import store from "./store"
 import Echart from 'echarts'
@@ -13,6 +13,6 @@ Vue.prototype.$echarts = Echart;
 
 new Vue({
   render: h => h(App),
-  router,
+  // router,
   store
 }).$mount('#app')
