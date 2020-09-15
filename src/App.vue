@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Widgets />
+    <!-- <Widgets /> -->
     <FooterLayer />
+    <!-- <InfoLayer /> -->
   </div>
 </template>
 
@@ -12,7 +13,7 @@
 // import BaseLevel from './components/BaseLevel.vue'
 import Widgets from './views/Widgets'
 import FooterLayer from './components/FooterLayer'
-import InfoLayer from './components/InfoLayer'
+// import InfoLayer from './components/InfoLayer'
 
 export default {
   name: 'App',
@@ -24,7 +25,7 @@ export default {
   components: {
     Widgets,
     FooterLayer,
-    InfoLayer
+    // InfoLayer
   },
   methods: {
     handleClick: function(){

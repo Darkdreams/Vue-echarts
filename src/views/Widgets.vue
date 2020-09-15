@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" id="container">
         <widget 
             v-for="widget in widgetList" 
             :key="widget.id" 
@@ -46,9 +46,10 @@ export default {
 
 <style scoped>
 .container {
-    width: 1920px;
-    margin: 0 auto;
+    width: 100%;
+    /* margin: 0 auto; */
     display: flex;
     flex-wrap: wrap;
+    position: relative;
 }
 </style>

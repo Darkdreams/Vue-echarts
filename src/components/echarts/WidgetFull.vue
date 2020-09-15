@@ -22,7 +22,6 @@ export default {
     },
 
     mounted() {
-        console.log(this.optionData)
         const { $echarts } = this
         myChart = $echarts.init(document.getElementById("main-full"))
         switch (this.index) {

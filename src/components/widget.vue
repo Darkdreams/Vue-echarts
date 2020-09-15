@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <div v-if="index === 3">
             <StaticWidget />
         </div>
@@ -11,7 +11,7 @@
                     </div>
                     <div class="head-title-text">{{title}}</div>
                 </div>
-                <div class="head-icon" @click="handlerClick(index)">
+                <div class="head-icon" @click="handlerClick(index, type)">
                     <img src="/image/symbols-buttons-big-screen.png">
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="echarts-comp-data">
                         <WidgetFull :optionData="optionData" :index="index"/>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@ export default {
     },
 
     methods: {
-        handlerClick: function(index) {
+        handlerClick: function(index, type) {
             switch (index) {
                 case 1:
                     this.optionData = this.$refs.one
@@ -132,6 +132,15 @@ export default {
                     this.optionData = this.$refs.eleven
                     break;
             }
+
+            switch (type) {
+                case "":
+                    break;
+                case "half":
+                    this.$vnode.context.$el.style.width = "50%"
+                    break;
+            }
+
             this.show = true
         },
         closeLayer: function(e){
@@ -142,13 +151,12 @@ export default {
                     this.show = false;
                 }
             }
+
+            this.$vnode.context.$el.style.width = "100%"
         }
     },
 
     mounted: function() {
-        
-        // this.optionData = this.$refs.one
-        
     }
 }
 </script>
@@ -167,6 +175,7 @@ export default {
     height: 310px;
     box-sizing: border-box;
     margin: 5px;
+    background: #FFFFFF;
     border: 1px solid rgba(255,255,255,0.04);
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.17), inset 0 -1px 0 0 rgba(255,255,255,0.08);
     border-radius: 12px;
@@ -283,7 +292,18 @@ export default {
 .echart-layer-half .echart-container {
     width: 100%;
     height: 620px;
-    margin: 30% auto 0;
+    margin: 20% auto 0;
+}
+
+.echart-layer-half .echart-container .echart-head {
+    height: 100px;
+    line-height: 100px;
+}
+
+.echart-layer-half .echart-container .echart-head .head-title-icon {
+    width: 64px;
+    height: 64px;
+    margin: 20.8px 0 0 22.5px;
 }
 
 .echart-layer-half .echart-container .echarts-comp-data {
