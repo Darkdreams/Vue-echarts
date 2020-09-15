@@ -7,12 +7,12 @@
             <div class="echarts-comp-head">
                 <div class="head-title">
                     <div class="head-title-icon">
-                        <img src="./image/1981600081064_.pic.jpg" alt="">
+                        <img src="/image/1981600081064_.pic.jpg" alt="">
                     </div>
                     <div class="head-title-text">{{title}}</div>
                 </div>
                 <div class="head-icon" @click="handlerClick(index)">
-                    <img src="./image/symbols-buttons-big-screen.png">
+                    <img src="/image/symbols-buttons-big-screen.png">
                 </div>
             </div>
             <div class="echarts-comp-data">
@@ -36,12 +36,12 @@
                     <div class="echart-head">
                         <div class="head-title">
                             <div class="head-title-icon">
-                                <img src="./image/1981600081064_.pic.jpg" alt="">
+                                <img src="/image/1981600081064_.pic.jpg" alt="">
                             </div>
                             <div class="head-title-text">{{title}}</div>
                         </div>
                         <div class="head-icon">
-                            <img src="./image/symbols-buttons-big-screen.png">
+                            <img src="/image/symbols-buttons-big-screen.png">
                         </div>
                     </div>
                     <div class="echarts-comp-data">

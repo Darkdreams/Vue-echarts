@@ -4,7 +4,7 @@
             <div class="item-head">
                 <div class="item-title">{{item.value}}</div>
                 <div class="item-icon">
-                    <img src="../image/symbols-buttons-big-screen.png">
+                    <img src="/image/symbols-buttons-big-screen.png">
                 </div>
             </div>
             <div class="item-data-mod">
@@ -20,18 +20,18 @@ export default {
         return {
             itemData: [
                 
-                {id: 1, value: "数量规模", src: require("./image/1.png")},
-                {id: 2, value: "部队编成", src: require("./image/2.png")},
-                {id: 3, value: "武器装备", src: require("./image/3.png")},
-                {id: 4, value: "武装力量", src: require("./image/4.png")},
-                {id: 5, value: "营房设施", src: require("./image/5.png")},
-                {id: 6, value: "部队编制", src: require("./image/6.png")},
-                {id: 7, value: "营房设施", src: require("./image/7.png")},
-                {id: 8, value: "营房设施对比", src: require("./image/8.png")},
-                {id: 9, value: "战略物资储备", src: require("./image/9.png")},
-                {id: 10, value: "人员热点图", src: require("./image/10.png")},
-                {id: 11, value: "武装力量", src: require("./image/11.png")},
-                {id: 12, value: "军事部署", src: require("./image/12.png")},
+                {id: 1, value: "数量规模", src:"/image/1.png"},
+                {id: 2, value: "部队编成", src:"/image/2.png"},
+                {id: 3, value: "武器装备", src:"/image/3.png"},
+                {id: 4, value: "武装力量", src:"/image/4.png"},
+                {id: 5, value: "营房设施", src:"/image/5.png"},
+                {id: 6, value: "部队编制", src:"/image/6.png"},
+                {id: 7, value: "营房设施", src:"/image/7.png"},
+                {id: 8, value: "营房设施对比", src:"/image/8.png"},
+                {id: 9, value: "战略物资储备", src:"/image/9.png"},
+                {id: 10, value: "人员热点图", src: "/image/10.png"},
+                {id: 11, value: "武装力量", src: "/image/11.png"},
+                {id: 12, value: "军事部署", src: "/image/12.png"},
             ]
         }
     }

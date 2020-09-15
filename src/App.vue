@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <Widgets /> -->
+    <Widgets />
     <FooterLayer />
   </div>
 </template>
