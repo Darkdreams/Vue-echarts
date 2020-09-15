@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Widgets />
+    <!-- <Widgets /> -->
+    <FooterLayer />
   </div>
 </template>
 
@@ -10,6 +11,9 @@
 // import ExerciseJSX from './components/ExerciseJSX.vue';
 // import BaseLevel from './components/BaseLevel.vue'
 import Widgets from './views/Widgets'
+import FooterLayer from './components/FooterLayer'
+import InfoLayer from './components/InfoLayer'
+
 export default {
   name: 'App',
   data: function() {
@@ -18,7 +22,9 @@ export default {
     }
   },
   components: {
-    Widgets
+    Widgets,
+    FooterLayer,
+    InfoLayer
   },
   methods: {
     handleClick: function(){
