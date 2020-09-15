@@ -126,10 +126,10 @@ export default {
                         },
                     ],
 
-                    top: '10%',
-                    left: '30%',
+                    top: '5%',
+                    // left: '30%',
                     bottom: '0%',
-                    right: 'center',
+                    right: '30%',
                     // initialTreeDepth: 2,
 
                     symbolSize: 10,
@@ -141,7 +141,6 @@ export default {
                         // formatter: '{b}',
                         red: "#333",
                         fontSize: 7,
-                        
                     },
 
                     leaves: {

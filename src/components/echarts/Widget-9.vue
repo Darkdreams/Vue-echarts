@@ -11,7 +11,7 @@ export default {
     },
     data() {
         return {
-            optionEchart: {
+            option: {
                 tooltip: {
                     trigger: 'item',
                     formatter: '{a} <br/>{b}: {c}万台 '
@@ -28,8 +28,8 @@ export default {
                         type: 'pie',
                         selectedMode: false,
 
-                        radius: [0, '30%'],
-                        
+                        radius: ["0", '50%'],
+                        // left: "70",
                         label: {
                             show: true,
                             position: 'inner'
@@ -46,7 +46,8 @@ export default {
                     {
                         name: '装备体系',
                         type: 'pie',
-                        radius: ['40%', '55%'],
+                        radius: ['60%', '80%'],
+                        // left: "70",
                         // selectedMode: 'single',
                         label: {
                             show: false,
@@ -102,7 +103,7 @@ export default {
     },
     methods: {
         draw: function(){
-            const { $echarts, optionEchart } = this
+            const { $echarts, option } = this
             const legend = {
                 show: false
             }
@@ -112,15 +113,15 @@ export default {
             }
             
             myChart = $echarts.init(document.getElementById("main9"))
-            myChart.setOption(optionEchart)
+            myChart.setOption(option)
 
 
             if(this.width <= 470) {
-                optionEchart.legend = legend
-                optionEchart.series[0].label = label
-                optionEchart.series[1].label = label
+                option.legend = legend
+                option.series[0].label = label
+                option.series[1].label = label
                 // myChart.resize()
-                myChart.setOption(optionEchart)
+                myChart.setOption(option)
             }
             
         },

@@ -1,6 +1,6 @@
 <template>
     <div class="static-mod">
-        <div v-for="item in itemData" :key="item.id" class="item" data-index="item.id">
+        <div v-for="item in itemData" :key="item.id" class="item">
             <div class="item-head">
                 <div class="item-title">{{item.value}}</div>
                 <div class="item-icon">
@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="item-data-mod">
-                图片{{item.id}}
+                <img :src="item.src">
             </div>
         </div>
     </div>
@@ -19,18 +19,19 @@ export default {
     data: function() {
         return {
             itemData: [
-                {id: 1, value: "item1"},
-                {id: 2, value: "item2"},
-                {id: 3, value: "item3"},
-                {id: 4, value: "item4"},
-                {id: 5, value: "item5"},
-                {id: 6, value: "item6"},
-                {id: 7, value: "item7"},
-                {id: 8, value: "item8"},
-                {id: 9, value: "item9"},
-                {id: 10, value: "item10"},
-                {id: 11, value: "item11"},
-                {id: 12, value: "item12"},
+                
+                {id: 1, value: "数量规模", src: require("./image/1.png")},
+                {id: 2, value: "部队编成", src: require("./image/2.png")},
+                {id: 3, value: "武器装备", src: require("./image/3.png")},
+                {id: 4, value: "武装力量", src: require("./image/4.png")},
+                {id: 5, value: "营房设施", src: require("./image/5.png")},
+                {id: 6, value: "部队编制", src: require("./image/6.png")},
+                {id: 7, value: "营房设施", src: require("./image/7.png")},
+                {id: 8, value: "营房设施对比", src: require("./image/8.png")},
+                {id: 9, value: "战略物资储备", src: require("./image/9.png")},
+                {id: 10, value: "人员热点图", src: require("./image/10.png")},
+                {id: 11, value: "武装力量", src: require("./image/11.png")},
+                {id: 12, value: "军事部署", src: require("./image/12.png")},
             ]
         }
     }
@@ -80,5 +81,10 @@ export default {
     height: 118px;
     background-image: linear-gradient(0deg, rgba(168,198,223,0.00) 0%, #A8C6DF 100%);
     border-radius: 0 0 4px 4px;
+}
+
+.item-data-mod img {
+    width: 100%;
+    height: 100%;
 }
 </style>

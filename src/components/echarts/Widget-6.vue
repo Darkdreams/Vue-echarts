@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import 'echarts-gl';
 let myChart = ""
 export default {
     props: {
@@ -29,7 +28,7 @@ export default {
                         name: '专业用房设施',
                         type: 'pie',
                         radius: ['50%', '70%'],
-                        avoidLabelOverlap: false,
+                        avoidLabelOverlap: true,
                         label: {
                             show: false,
                             position: 'center'
@@ -37,7 +36,7 @@ export default {
                         emphasis: {
                             label: {
                                 show: true,
-                                fontSize: '100%',
+                                fontSize: '10',
                                 fontWeight: 'bold'
                             }
                         },

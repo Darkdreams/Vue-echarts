@@ -166,7 +166,7 @@ export default {
     },
     methods: {
         draw: function(){
-            const { dateList, valueList,option } = this
+            const { dateList, valueList } = this
             myChart = this.$echarts.init(document.getElementById("main4"))
             myChart.setOption(option)
         }
@@ -174,10 +174,6 @@ export default {
     mounted() {
         let {dateList, option} = this
         option.xAxis.data = dateList
-        // this.data.map(function (item, index) {
-        //     dateList.push(item[0]);
-        //     valueList.push(item[1]);
-        // })
         this.draw()
 
         const legend = {
@@ -186,7 +182,6 @@ export default {
           
         if(this.width <= 470) {
             option.legend = legend
-            // myChart.resize()
             myChart.setOption(option)
         }
     },

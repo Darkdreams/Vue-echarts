@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             dataMap: {},
-            optionEchart: {
+            option: {
                 baseOption: {
                     angleAxis: {
                         type: 'category',
@@ -182,9 +182,9 @@ export default {
             return obj;
         },
         draw: function(){
-            const { $echarts, optionEchart } = this
+            const { $echarts, option } = this
             myChart = $echarts.init(document.getElementById("main2"))
-            myChart.setOption(optionEchart)
+            myChart.setOption(option)
         },
         addData: function(){
             const { dataFormatter, dataMap } = this
@@ -237,7 +237,7 @@ export default {
                 2016:[99.3, 92.9, 90.5, 95.3, 98.1, 92.1, 98.8, 93.3, 92.7, 94.4, 100, 102.5],
             });
 
-            this.optionEchart.options = [
+            this.option.options = [
                 {
                     // title: { text: '2015年编制人数' },
                     series: [
@@ -309,9 +309,9 @@ export default {
         } 
           
         if(this.width <= 470) {
-            this.optionEchart.baseOption.legend = legend
+            this.option.baseOption.legend = legend
             // myChart.resize()
-            myChart.setOption(this.optionEchart)
+            myChart.setOption(this.option)
         }
 
     }

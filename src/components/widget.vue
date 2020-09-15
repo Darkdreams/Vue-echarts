@@ -27,8 +27,12 @@
                 <Widget11 v-if="index === 10" :width="width" ref="ten"/>
                 <Widget6 v-if="index === 11" :width="width" ref="eleven"/>
             </div>
-            <div class="echart-layer-container" v-if="show">
-                <div class="echart-container">
+            <div 
+                :class="type != '' ?'echart-layer-container echart-layer-half':'echart-layer-container'" 
+                v-if="show"
+                @click="closeLayer"
+            >
+                <div class="echart-container" id="big-echart-mod">
                     <div class="echart-head">
                         <div class="head-title">
                             <div class="head-title-icon">
@@ -41,7 +45,7 @@
                         </div>
                     </div>
                     <div class="echarts-comp-data">
-                        <WidgetFull :optionData="optionData"/>
+                        <WidgetFull :optionData="optionData" :index="index"/>
                     </div>   
                 </div>
             </div>
@@ -67,7 +71,8 @@ import WidgetFull from './echarts/WidgetFull'
 export default {
     props: {
         index: Number,
-        title: String
+        title: String,
+        type: String
     },
     components: {
         StaticWidget,
@@ -128,13 +133,22 @@ export default {
                     break;
             }
             this.show = true
+        },
+        closeLayer: function(e){
+            var ele = document.getElementById("big-echart-mod");
+
+            if(ele){
+                if(!ele.contains(event.target)){            
+                    this.show = false;
+                }
+            }
         }
     },
 
     mounted: function() {
         
         // this.optionData = this.$refs.one
-        // console.log(this.optionData)
+        
     }
 }
 </script>
@@ -218,7 +232,7 @@ export default {
     border-radius: 12px;
     width: 1240px;
     height: 826.7px;
-    margin: 111.3px auto 0;
+    margin: 8% auto 0;
 }
 
 .echart-layer-container .echart-container .echart-head {
@@ -260,6 +274,20 @@ export default {
     height: 690.7px;
     background-image: linear-gradient(0deg, rgba(168,198,223,0.00) 0%, #A8C6DF 100%);
     border-radius: 0 0 4px 4px;
+}
+
+.echart-layer-half {
+    width: 50%;
+}
+
+.echart-layer-half .echart-container {
+    width: 100%;
+    height: 620px;
+    margin: 30% auto 0;
+}
+
+.echart-layer-half .echart-container .echarts-comp-data {
+    height: 518px;
 }
 
 </style>
