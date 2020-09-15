@@ -68,30 +68,8 @@ export default {
                 '长沙':[113,28.21],
                 '合肥':[117.27,31.86],
                 '武汉':[114.31,30.52],
-            }
-        }
-    },
-
-    methods: {
-        convertData: function (data) {
-            var res = [];
-            for (var i = 0; i < data.length; i++) {
-                var geoCoord = this.geoCoordMap[data[i].name];
-                if (geoCoord) {
-                    res.push({
-                        name: data[i].name,
-                        value: geoCoord.concat(data[i].value)
-                    });
-                }
-            }
-            return res;
-        },
-        draw: function(){
-            const {$echarts, data1, geoCoordMap} = this
-
-            myChart = $echarts.init(document.getElementById("main11"))
-
-            let option = {
+            },
+            option: {
                 title: {
                     // text: '全国各省兵力',
                     left: 'center'
@@ -208,7 +186,7 @@ export default {
                         // name: 'pm2.5',
                         type: 'scatter',
                         coordinateSystem: 'bmap',
-                        data: this.convertData(data1),
+                        data: [],
                         symbolSize: function (val) {
                             return val[2];
                         },
@@ -234,9 +212,7 @@ export default {
                         name: 'Top 5',
                         type: 'effectScatter',
                         coordinateSystem: 'bmap',
-                        data: this.convertData(data1.sort(function (a, b) {
-                            return b.value - a.value;
-                        }).slice(0, 6)),
+                        data: [],
                         symbolSize: function (val) {
                             return val[2];
                         },
@@ -261,8 +237,29 @@ export default {
                         zlevel: 1
                     }
                 ]
-            };
-            
+            }
+        }
+    },
+
+    methods: {
+        convertData: function (data) {
+            var res = [];
+            for (var i = 0; i < data.length; i++) {
+                var geoCoord = this.geoCoordMap[data[i].name];
+                if (geoCoord) {
+                    res.push({
+                        name: data[i].name,
+                        value: geoCoord.concat(data[i].value)
+                    });
+                }
+            }
+            return res;
+        },
+        draw: function(){
+            const {$echarts, data1, geoCoordMap, option} = this
+
+            myChart = $echarts.init(document.getElementById("main11"))
+
             myChart.setOption(option)
             const roam = false
             if(this.width <= 470) {
@@ -288,6 +285,10 @@ export default {
             document.body.appendChild(s);
         })
         loadBmap.then(() => {
+            this.option.series[0].data = this.convertData(this.data1)
+            this.option.series[1].data = this.convertData(this.data1.sort(function (a, b) {
+                return b.value - a.value;
+            }).slice(0, 6))
             this.draw()
         })
     },

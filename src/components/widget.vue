@@ -16,16 +16,16 @@
                 </div>
             </div>
             <div class="echarts-comp-data">
-                <Widget1 v-if="index === 1" :width="width" />
-                <Widget2 v-if="index === 2" :width="width"/>
-                <Widget4 v-if="index === 4" :width="width"/>
-                <Widget5 v-if="index === 5" :width="width"/>
-                <Widget7 v-if="index === 6" :width="width"/>
-                <Widget8 v-if="index === 7" :width="width"/>
-                <Widget9 v-if="index === 8" :width="width"/>
-                <Widget10 v-if="index === 9" :width="width"/>
-                <Widget11 v-if="index === 10" :width="width"/>
-                <Widget6 v-if="index === 11" :width="width"/>
+                <Widget1 v-if="index === 1" :width="width" ref="one"/>
+                <Widget2 v-if="index === 2" :width="width" ref="two"/>
+                <Widget4 v-if="index === 4" :width="width" ref="four"/>
+                <Widget5 v-if="index === 5" :width="width" ref="five"/>
+                <Widget7 v-if="index === 6" :width="width" ref="six"/>
+                <Widget8 v-if="index === 7" :width="width" ref="seven"/>
+                <Widget9 v-if="index === 8" :width="width" ref="eight"/>
+                <Widget10 v-if="index === 9" :width="width" ref="nine"/>
+                <Widget11 v-if="index === 10" :width="width" ref="ten"/>
+                <Widget6 v-if="index === 11" :width="width" ref="eleven"/>
             </div>
             <div class="echart-layer-container" v-if="show">
                 <div class="echart-container">
@@ -41,22 +41,11 @@
                         </div>
                     </div>
                     <div class="echarts-comp-data">
-                        <Widget1 v-if="index === 1"/>
-                        <Widget2 v-if="index === 2"/>
-                        <Widget4 v-if="index === 4"/>
-                        <Widget5 v-if="index === 5"/>
-                        <Widget7 v-if="index === 6"/>
-                        <Widget8 v-if="index === 7"/>
-                        <Widget9 v-if="index === 8"/>
-                        <Widget10 v-if="index === 9"/>
-                        <Widget11 v-if="index === 11" />
-                        <Widget6 v-if="index === 11"/>
-                        <!-- <WidgetFull /> -->
+                        <WidgetFull :optionData="optionData"/>
                     </div>   
                 </div>
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -100,29 +89,52 @@ export default {
             width: 470,
             show: false,
             remove: false,
+            optionData: {}
         }
     },
 
     methods: {
         handlerClick: function(index) {
-            // this.show = true
-            // this.remove = true
-            // console.log(index)
-            console.log(this.$refs.one)
-
+            switch (index) {
+                case 1:
+                    this.optionData = this.$refs.one
+                    break;
+                case 2:
+                    this.optionData = this.$refs.two
+                    break;
+                case 4:
+                    this.optionData = this.$refs.four
+                    break;
+                case 5:
+                    this.optionData = this.$refs.five
+                    break;
+                case 6:
+                    this.optionData = this.$refs.six
+                    break;
+                case 7:
+                    this.optionData = this.$refs.seven
+                    break;
+                case 8:
+                    this.optionData = this.$refs.eight
+                    break;
+                case 9:
+                    this.optionData = this.$refs.nine
+                    break;
+                case 10:
+                    this.optionData = this.$refs.ten
+                    break;
+                case 11:
+                    this.optionData = this.$refs.eleven
+                    break;
+            }
+            this.show = true
         }
     },
 
     mounted: function() {
-        // console.log(this.index)
-    },
-    watch: {
-        show () {
-            console.log('show 改变了');
-        },
-        remove() {
-            console.log('remove 改变了');
-        }
+        
+        // this.optionData = this.$refs.one
+        // console.log(this.optionData)
     }
 }
 </script>

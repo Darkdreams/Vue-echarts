@@ -1,5 +1,5 @@
 <template>
-    <div id="main1" ></div>
+    <div id="main1"></div>
 </template>
 
 <script>
@@ -179,8 +179,7 @@ export default {
             const { $echarts, optionEchart } = this
             myChart = $echarts.init(document.getElementById("main1"))
             myChart.setOption(optionEchart)
-        },
-        
+        }
     },
     created() {
     },
